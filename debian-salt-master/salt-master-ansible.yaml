@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+  tasks:
+      - name: Adding APT key for salt repo
+        apt_key: url=http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key state=present 
+      - name: Adding APT repo for salt
+        apt_repository: repo='deb http://debian.saltstack.com/debian wheezy-saltstack main' state=present
+      - name: Installing packages
+        apt: pkg={{item}} state=installed
+        with_items:
+            - wget
+            - salt-master
