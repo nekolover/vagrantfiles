@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "fgrehm/wheezy64-lxc"
+  config.vm.hostname = "salt-master.nk.dev"
 
   config.vm.provision "ansible" do |ansible|
      ansible.playbook = "salt-master-ansible.yaml" 
